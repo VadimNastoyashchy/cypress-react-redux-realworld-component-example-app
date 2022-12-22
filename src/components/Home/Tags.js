@@ -17,6 +17,7 @@ const Tags = props => {
               <a
                 href=""
                 className="tag-default tag-pill"
+                data-cy="tag"
                 key={tag}
                 onClick={handleClick}>
                 {tag}
