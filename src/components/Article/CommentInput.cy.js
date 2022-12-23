@@ -1,10 +1,6 @@
 import CommentInput from "./CommentInput";
 import { BrowserRouter as Router } from 'react-router-dom';
-
-const currentUser = {
-    image: "undefined",
-    username: "Sarah Conner"
-}
+import { currentUser } from "../../../cypress/mock/CurrentUser";
 
 describe('<CommentInput />', () => {
     it('renders', () => {
