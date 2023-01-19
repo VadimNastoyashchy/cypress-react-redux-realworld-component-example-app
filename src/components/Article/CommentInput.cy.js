@@ -1,6 +1,7 @@
 import CommentInput from "./CommentInput";
 import { BrowserRouter as Router } from 'react-router-dom';
 import { currentUser } from "../../../cypress/mock/CurrentUser";
+import CommentInputComponent from "../../../cypress/src/components/CommentInputComponent";
 
 describe('<CommentInput />', () => {
     it('renders', () => {
@@ -10,8 +11,15 @@ describe('<CommentInput />', () => {
             </Router>
         );
 
-        cy.get('textarea').invoke('attr', 'placeholder').should('eq', 'Write a comment...');
-        cy.get('img').invoke('attr', 'alt').should('eq', currentUser.username);
-        cy.contains('button', 'Post Comment').should('be.visible').and('be.enabled');
+        CommentInputComponent.textarea
+            .invoke('attr', 'placeholder')
+            .should('eq', 'Write a comment...');
+        CommentInputComponent.img
+            .invoke('attr', 'alt')
+            .should('eq', currentUser.username);
+        CommentInputComponent
+            .getElementByText('Post Comment', 'button')
+            .should('be.visible')
+            .and('be.enabled');
     });
 });
