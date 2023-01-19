@@ -1,11 +1,18 @@
 import React from 'react';
+import BannerComponent from '../../../cypress/src/components/BannerComponent';
 import Banner from './Banner';
 
 describe('<Banner />', () => {
   it('renders', () => {
     const title = 'App Name';
     cy.mount(<Banner appName={title} />);
-    cy.contains('.logo-font', title.toLocaleLowerCase()).should('be.visible');
-    cy.contains('p', 'A place to share your knowledge.').should('be.visible');
+
+    BannerComponent
+      .getElementByText(title.toLocaleLowerCase(), '.logo-font')
+      .should('be.visible');
+
+    BannerComponent
+      .getElementByText('A place to share your knowledge.', 'p')
+      .should('be.visible');
   });
 });
